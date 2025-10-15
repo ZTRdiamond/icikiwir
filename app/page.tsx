@@ -1017,7 +1017,7 @@ export default function Portfolio() {
       </footer>
     </div>
   )
-}
+})
 
 
 function getSectionIcon(section: string) {
