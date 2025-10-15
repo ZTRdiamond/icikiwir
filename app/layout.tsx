@@ -15,8 +15,8 @@ const poppins = Poppins({
 })
 
 export const metadata = {
-  title: "Professional Portfolio",
-  description: "A professional portfolio showcasing design and development work"
+  title: "Fatahillah as a developer",
+  description: "Hi, i'm fatahillah al makarim. i was 20 years old at this year, let's get to know each other better on my personal website!"
 }
 
 export default function RootLayout({
