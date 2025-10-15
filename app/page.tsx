@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useEffect, useState, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
@@ -13,8 +12,6 @@ import {
   Mail,
   Menu,
   X,
-  Linkedin,
-  Twitter,
   Instagram,
   Code,
   Briefcase,
@@ -28,16 +25,117 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
+function getSectionIcon(section: string) {
+  switch (section) {
+    case "home":
+      return <User className="h-5 w-5 text-teal-500" />
+    case "about":
+      return <User className="h-5 w-5 text-teal-500" />
+    case "personal":
+      return <Heart className="h-5 w-5 text-teal-500" />
+    case "work":
+      return <Briefcase className="h-5 w-5 text-teal-500" />
+    case "expertise":
+      return <Code className="h-5 w-5 text-teal-500" />
+    case "contact":
+      return <Mail className="h-5 w-5 text-teal-500" />
+    default:
+      return null
+  }
+}
+
+function SectionTitle({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="text-center">
+      <h2 className="text-3xl md:text-4xl font-bold inline-block relative text-[#f5f5f5]">
+        {children}
+        <motion.span
+          className="absolute -bottom-3 left-1/2 -translate-x-1/2 h-1 bg-gradient-to-r from-teal-500 to-emerald-500 rounded-full"
+          initial={{ width: 0 }}
+          whileInView={{ width: "4rem" }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        />
+      </h2>
+    </div>
+  )
+}
+
+function ProjectCard({ project, index }: { project: any; index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      viewport={{ once: true }}
+      className="group"
+    >
+      <div className="grid md:grid-cols-2 gap-8 items-center">
+        <div className={`order-2 ${index % 2 === 0 ? "md:order-2" : "md:order-1"}`}>
+          <h3 className="text-2xl font-bold mb-4 text-[#f5f5f5]">{project.title}</h3>
+          <p className="text-[#aaa] mb-6 leading-relaxed">{project.description}</p>
+          <div className="flex flex-wrap gap-2 mb-6">
+            {project.tags.map((tag: string) => (
+              <Badge
+                key={tag}
+                variant="outline"
+                className="px-3 py-1 bg-[#111] text-[#aaa] text-sm rounded-md border border-[#222]"
+              >
+                {tag}
+              </Badge>
+            ))}
+          </div>
+          <Button className="bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-[#0a0a0a] rounded-md group">
+            Lorem Ipsum <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Button>
+        </div>
+
+        <div className={`order-1 ${index % 2 === 0 ? "md:order-1" : "md:order-2"}`}>
+          <motion.div
+            className="relative overflow-hidden rounded-lg border border-[#222] aspect-[16/9] group-hover:border-teal-500/30 transition-colors"
+            whileHover={{ scale: 1.02 }}
+          >
+            <Image
+              src={project.image || "/placeholder.svg"}
+              alt={project.title}
+              fill
+              loading="lazy"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent opacity-60" />
+          </motion.div>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
+function ExpertiseCard({ skill, index }: { skill: any; index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 15 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, delay: index * 0.05 }}
+      viewport={{ once: true, margin: "-50px" }}
+      className="bg-[#111] border border-[#222] rounded-lg p-4 sm:p-6 hover:border-teal-500/30 transition-colors hover-card"
+      whileHover={{ y: -3, transition: { duration: 0.2 } }}
+    >
+      <h3 className="text-xl font-medium text-[#f5f5f5] mb-3">{skill.title}</h3>
+      <p className="text-[#aaa] text-sm leading-relaxed">{skill.description}</p>
+    </motion.div>
+  )
+}
+
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home")
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrollProgress, setScrollProgress] = useState(0)
   const [showAllProjects, setShowAllProjects] = useState(false)
-  const sections = ["home", "about", "personal", "work", "expertise", "contact"]
+  const sections = ["home", "about", "personal", "work", "expertise", "contact"] as const
   const { scrollYProgress } = useScroll()
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
 
-  
   const sectionRefs = {
     home: useRef<HTMLElement>(null),
     about: useRef<HTMLElement>(null),
@@ -47,18 +145,15 @@ export default function Portfolio() {
     contact: useRef<HTMLElement>(null),
   }
 
-  
   const socialProfiles = [
-    { name: "GitHub", icon: <Github className="h-5 w-5" />, url: "https://github.com/ztrdiamond" },
+    { name: "GitHub", icon: <Github className="h-5 w-5" />, url: "https://github.com/ztrdiamond" },
     { name: "Instagram", icon: <Instagram className="h-5 w-5" />, url: "https://instagram.com/fth.am_" },
   ]
 
-  
   const projects = [
     {
       title: "Amira Chatbot",
-      description:
-        "A simple and multifunctional whatsapp bot for everyone.",
+      description: "A simple and multifunctional whatsapp bot for everyone.",
       image: "https://files.catbox.moe/wlr9km.png",
       tags: ["Bot", "Baileys"],
       link: "https://amira.us.kg",
@@ -66,13 +161,11 @@ export default function Portfolio() {
   ]
 
   useEffect(() => {
-    
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden"
     } else {
       document.body.style.overflow = ""
     }
-
     return () => {
       document.body.style.overflow = ""
     }
@@ -87,11 +180,9 @@ export default function Portfolio() {
           const windowHeight = window.innerHeight
           const documentHeight = document.body.scrollHeight
 
-          
           const progress = (scrollPosition / (documentHeight - windowHeight)) * 100
           setScrollProgress(progress)
 
-          
           let currentSection = activeSection
           for (const section of sections) {
             const element = document.getElementById(section)
@@ -116,7 +207,6 @@ export default function Portfolio() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [sections, activeSection])
 
-  
   const scrollToSection = (sectionId: string) => {
     const section = sectionRefs[sectionId as keyof typeof sectionRefs]?.current
     if (section) {
@@ -127,17 +217,13 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#f5f5f5] overflow-hidden">
-      {}
+      {/* Progress bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-teal-500 to-emerald-500 z-[99]"
-        style={{
-          scaleX: scrollProgress,
-          transformOrigin: "0%",
-          willChange: "transform",
-        }}
+        style={{ scaleX: scrollProgress, transformOrigin: "0%", willChange: "transform" }}
       />
 
-      {}
+      {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-[100] bg-[#0a0a0a]/90 backdrop-blur-md border-b border-[#222] transition-all duration-300">
         <div className="container mx-auto px-6 py-5 flex justify-between items-center">
           <Link href="#home" className="text-xl font-medium tracking-tight font-poppins">
@@ -178,7 +264,7 @@ export default function Portfolio() {
         </div>
       </header>
 
-      {}
+      {/* Mobile menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -231,12 +317,7 @@ export default function Portfolio() {
                 </Button>
               </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3, duration: 0.3 }}
-                className="flex justify-center gap-4 mt-4 pt-4 border-t border-[#222]"
-              >
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3, duration: 0.3 }} className="flex justify-center gap-4 mt-4 pt-4 border-t border-[#222]">
                 {socialProfiles.map((profile) => (
                   <TooltipProvider key={profile.name}>
                     <Tooltip>
@@ -257,16 +338,13 @@ export default function Portfolio() {
         )}
       </AnimatePresence>
 
-      {}
+      {/* Home */}
       <section id="home" ref={sectionRefs.home} className="min-h-screen flex items-center justify-center pt-20 pb-16">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-6 relative">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2, duration: 0.5 }}>
-                <Badge
-                  variant="outline"
-                  className="text-sm font-medium text-teal-500 mb-4 tracking-wider px-4 py-1.5 border-teal-500/30"
-                >
+                <Badge variant="outline" className="text-sm font-medium text-teal-500 mb-4 tracking-wider px-4 py-1.5 border-teal-500/30">
                   Tech Enthusiast
                 </Badge>
               </motion.div>
@@ -292,13 +370,7 @@ export default function Portfolio() {
                   Contact
                 </Button>
               </div>
-
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6, duration: 0.5 }}
-                className="flex gap-4 mt-8"
-              >
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6, duration: 0.5 }} className="flex gap-4 mt-8">
                 {socialProfiles.map((profile) => (
                   <TooltipProvider key={profile.name}>
                     <Tooltip>
@@ -326,7 +398,7 @@ export default function Portfolio() {
                 className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-emerald-500/10 rounded-2xl -rotate-6"
                 animate={{ rotate: [-6, -4, -6] }}
                 transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-              ></motion.div>
+              />
               <motion.div
                 className="absolute inset-0 bg-[#111] rounded-2xl border border-[#222] overflow-hidden rotate-3"
                 animate={{ rotate: [3, 5, 3] }}
@@ -340,7 +412,7 @@ export default function Portfolio() {
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover mix-blend-luminosity opacity-90"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent opacity-40"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent opacity-40" />
               </motion.div>
             </motion.div>
           </div>
@@ -356,14 +428,12 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {}
+      {/* About */}
       <section id="about" ref={sectionRefs.about} className="py-24 bg-[#0f0f0f]">
         <div className="container mx-auto px-6">
           <SectionTitle>About</SectionTitle>
 
           <div className="mt-16">
-            {}
-
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -371,12 +441,8 @@ export default function Portfolio() {
               viewport={{ once: true }}
             >
               <h3 className="text-2xl font-bold mb-6 text-[#f5f5f5]">Lorem Ipsum Dolor</h3>
-              <p className="text-[#aaa] mb-6 leading-relaxed">
-                Yayaya
-              </p>
-              <p className="text-[#aaa] mb-8 leading-relaxed">
-                Yeyeye
-              </p>
+              <p className="text-[#aaa] mb-6 leading-relaxed">Yayaya</p>
+              <p className="text-[#aaa] mb-8 leading-relaxed">Yeyeye</p>
 
               <div className="grid grid-cols-2 gap-8 mb-8">
                 <div>
@@ -393,7 +459,7 @@ export default function Portfolio() {
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-teal-500 font-medium mb-3">Skills & Knowledge</h4>
+                  <h4 className="text-teal-500 font-medium mb-3">Skills &amp; Knowledge</h4>
                   <div className="space-y-4">
                     <div className="hover-card p-3 rounded-lg bg-[#111]/50">
                       <div className="text-[#f5f5f5] font-medium">Consectetur Adipiscing</div>
@@ -418,18 +484,13 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {}
+      {/* Personal */}
       <section id="personal" ref={sectionRefs.personal} className="py-24 bg-[#0a0a0a]">
         <div className="container mx-auto px-6">
           <SectionTitle>Personal</SectionTitle>
 
           <div className="mt-16 grid lg:grid-cols-2 gap-12">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
+            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}>
               <h3 className="text-2xl font-bold mb-6 text-[#f5f5f5]">Dolor Sit Amet</h3>
               <div className="space-y-4 text-[#aaa] leading-relaxed">
                 <p>
@@ -449,94 +510,45 @@ export default function Portfolio() {
               <div className="mt-10">
                 <h4 className="text-xl font-medium mb-4 text-[#f5f5f5]">Consectetur Adipiscing</h4>
                 <div className="grid grid-cols-1 xs:grid-cols-2 gap-4">
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    className="flex items-center gap-2 sm:gap-3 bg-[#111] border border-[#222] rounded-lg p-3 sm:p-4 hover:border-teal-500/30 transition-colors hover-card"
-                  >
-                    <div className="bg-teal-500/10 p-1.5 sm:p-2 rounded-md flex-shrink-0">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-teal-500 sm:h-5 sm:w-5 h-4 w-4"
-                      >
+                  {[
+                    { label: "Lorem", svg: <path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12"></path> },
+                  ].map((_, i) => null)}
+                  {/* Empat item aslinya dipertahankan di bawah */}
+                  <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-3 bg-[#111] border border-[#222] rounded-lg p-4 hover:border-teal-500/30 transition-colors hover-card">
+                    <div className="bg-teal-500/10 p-2 rounded-md flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-teal-500">
                         <path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12"></path>
                         <circle cx="17" cy="7" r="5"></circle>
                       </svg>
                     </div>
-                    <span className="text-[#f5f5f5] text-sm sm:text-base truncate">Lorem</span>
+                    <span className="text-[#f5f5f5]">Lorem</span>
                   </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    className="flex items-center gap-2 sm:gap-3 bg-[#111] border border-[#222] rounded-lg p-3 sm:p-4 hover:border-teal-500/30 transition-colors hover-card"
-                  >
-                    <div className="bg-teal-500/10 p-1.5 sm:p-2 rounded-md flex-shrink-0">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-teal-500 sm:h-5 sm:w-5 h-4 w-4"
-                      >
+
+                  <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-3 bg-[#111] border border-[#222] rounded-lg p-4 hover:border-teal-500/30 transition-colors hover-card">
+                    <div className="bg-teal-500/10 p-2 rounded-md flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-teal-500">
                         <path d="M2 3h20"></path>
                         <path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"></path>
                         <path d="m7 21 5-5 5 5"></path>
                       </svg>
                     </div>
-                    <span className="text-[#f5f5f5] text-sm sm:text-base truncate">Ipsum</span>
+                    <span className="text-[#f5f5f5]">Ipsum</span>
                   </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    className="flex items-center gap-2 sm:gap-3 bg-[#111] border border-[#222] rounded-lg p-3 sm:p-4 hover:border-teal-500/30 transition-colors hover-card"
-                  >
-                    <div className="bg-teal-500/10 p-1.5 sm:p-2 rounded-md flex-shrink-0">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-teal-500 sm:h-5 sm:w-5 h-4 w-4"
-                      >
+
+                  <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-3 bg-[#111] border border-[#222] rounded-lg p-4 hover:border-teal-500/30 transition-colors hover-card">
+                    <div className="bg-teal-500/10 p-2 rounded-md flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-teal-500">
                         <path d="M9 18V5l12-2v13"></path>
                         <circle cx="6" cy="18" r="3"></circle>
                         <circle cx="18" cy="16" r="3"></circle>
                       </svg>
                     </div>
-                    <span className="text-[#f5f5f5] text-sm sm:text-base truncate">Dolor</span>
+                    <span className="text-[#f5f5f5]">Dolor</span>
                   </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    className="flex items-center gap-2 sm:gap-3 bg-[#111] border border-[#222] rounded-lg p-3 sm:p-4 hover:border-teal-500/30 transition-colors hover-card"
-                  >
-                    <div className="bg-teal-500/10 p-1.5 sm:p-2 rounded-md flex-shrink-0">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-teal-500 sm:h-5 sm:w-5 h-4 w-4"
-                      >
+
+                  <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-3 bg-[#111] border border-[#222] rounded-lg p-4 hover:border-teal-500/30 transition-colors hover-card">
+                    <div className="bg-teal-500/10 p-2 rounded-md flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-teal-500">
                         <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
                         <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
                         <line x1="6" y1="1" x2="6" y2="4"></line>
@@ -544,56 +556,30 @@ export default function Portfolio() {
                         <line x1="14" y1="1" x2="14" y2="4"></line>
                       </svg>
                     </div>
-                    <span className="text-[#f5f5f5] text-sm sm:text-base truncate">Sit</span>
+                    <span className="text-[#f5f5f5]">Sit</span>
                   </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    className="flex items-center gap-2 sm:gap-3 bg-[#111] border border-[#222] rounded-lg p-3 sm:p-4 hover:border-teal-500/30 transition-colors hover-card"
-                  >
-                    <div className="bg-teal-500/10 p-1.5 sm:p-2 rounded-md flex-shrink-0">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-teal-500 sm:h-5 sm:w-5 h-4 w-4"
-                      >
+
+                  <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-3 bg-[#111] border border-[#222] rounded-lg p-4 hover:border-teal-500/30 transition-colors hover-card">
+                    <div className="bg-teal-500/10 p-2 rounded-md flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-teal-500">
                         <path d="m21 10-5-5-2 2-9-9-4 4 9 9-2 2 5 5c1 1 2 1 3 0l5-5c1-1 1-2 0-3Z"></path>
                         <path d="M7.5 12.5 11 16"></path>
                         <path d="M11 7 9.5 5.5"></path>
                         <path d="M14 10 12.5 8.5"></path>
                       </svg>
                     </div>
-                    <span className="text-[#f5f5f5] text-sm sm:text-base truncate">Amet</span>
+                    <span className="text-[#f5f5f5]">Amet</span>
                   </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    className="flex items-center gap-2 sm:gap-3 bg-[#111] border border-[#222] rounded-lg p-3 sm:p-4 hover:border-teal-500/30 transition-colors hover-card"
-                  >
-                    <div className="bg-teal-500/10 p-1.5 sm:p-2 rounded-md flex-shrink-0">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-teal-500 sm:h-5 sm:w-5 h-4 w-4"
-                      >
+
+                  <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-3 bg-[#111] border border-[#222] rounded-lg p-4 hover:border-teal-500/30 transition-colors hover-card">
+                    <div className="bg-teal-500/10 p-2 rounded-md flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-teal-500">
                         <circle cx="12" cy="12" r="10"></circle>
                         <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
                         <path d="M2 12h20"></path>
                       </svg>
                     </div>
-                    <span className="text-[#f5f5f5] text-sm sm:text-base truncate">Consectetur</span>
+                    <span className="text-[#f5f5f5]">Consectetur</span>
                   </motion.div>
                 </div>
               </div>
@@ -608,82 +594,57 @@ export default function Portfolio() {
             >
               <div>
                 <h4 className="text-xl font-medium mb-6 text-[#f5f5f5]">Activity</h4>
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  className="bg-[#111] border border-[#222] rounded-lg p-6 hover:border-teal-500/30 transition-colors hover-card"
-                >
+                <motion.div whileHover={{ scale: 1.02 }} className="bg-[#111] border border-[#222] rounded-lg p-6 hover:border-teal-500/30 transition-colors hover-card">
                   <div className="rounded-lg overflow-hidden border border-[#222] shadow-md bg-[#111] p-[1px]">
                     <iframe
                       src="https://github-readme-stats.vercel.app/api/wakatime?username=@ztrdiamond&card_width=300&bg_color=21232a&title_color=61dafb&text_color=ffffff&hide_border=true"
                       width="100%"
                       height="380"
-                      frameBorder="0"
+                      frameBorder={0}
                       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                       className="bg-[#111] rounded-lg"
                       style={{ borderRadius: "8px", border: "none" }}
-                    ></iframe>
+                    />
                   </div>
                 </motion.div>
-              </div>1
+              </div>
 
               <div>
                 <h4 className="text-xl font-medium mb-6 text-[#f5f5f5]">Current Job</h4>
                 <div className="space-y-4">
-                  <motion.div
-                    whileHover={{ scale: 1.02, x: 5 }}
-                    className="bg-[#111] border border-[#222] rounded-lg p-5 hover:border-teal-500/30 transition-colors hover-card"
-                  >
+                  <motion.div whileHover={{ scale: 1.02, x: 5 }} className="bg-[#111] border border-[#222] rounded-lg p-5 hover:border-teal-500/30 transition-colors hover-card">
                     <div className="flex justify-between items-center">
                       <span className="text-[#aaa]">Job field</span>
                       <span className="text-[#f5f5f5] font-medium">Construction</span>
                     </div>
                   </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.02, x: 5 }}
-                    className="bg-[#111] border border-[#222] rounded-lg p-5 hover:border-teal-500/30 transition-colors hover-card"
-                  >
+                  <motion.div whileHover={{ scale: 1.02, x: 5 }} className="bg-[#111] border border-[#222] rounded-lg p-5 hover:border-teal-500/30 transition-colors hover-card">
                     <div className="flex justify-between items-center">
                       <span className="text-[#aaa]">Job title</span>
                       <span className="text-[#f5f5f5] font-medium">Helper</span>
                     </div>
                   </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.02, x: 5 }}
-                    className="bg-[#111] border border-[#222] rounded-lg p-5 hover:border-teal-500/30 transition-colors hover-card"
-                  >
+                  <motion.div whileHover={{ scale: 1.02, x: 5 }} className="bg-[#111] border border-[#222] rounded-lg p-5 hover:border-teal-500/30 transition-colors hover-card">
                     <div className="flex justify-between items-center">
                       <span className="text-[#aaa]">Job experience</span>
                       <span className="text-[#f5f5f5] font-medium">10+ month</span>
                     </div>
-                  </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.02, x: 5 }}
-                    className="bg-[#111] border border-[#222] rounded-lg p-5 hover:border-teal-500/30 transition-colors hover-card"
-                  >
                   </motion.div>
                 </div>
               </div>
 
               <div>
                 <h4 className="text-xl font-medium mb-6 text-[#f5f5f5]">Employment History</h4>
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  className="bg-[#111] border border-[#222] rounded-lg p-6 hover:border-teal-500/30 transition-colors hover-card"
-                >
+                <motion.div whileHover={{ scale: 1.02 }} className="bg-[#111] border border-[#222] rounded-lg p-6 hover:border-teal-500/30 transition-colors hover-card">
                   <div className="flex gap-6">
                     <motion.div
                       className="relative w-24 h-36 flex-shrink-0"
                       animate={{ rotate: [-3, 0, -3] }}
                       transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
                     >
-                      <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-emerald-500/10 rounded-md -rotate-3"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-emerald-500/10 rounded-md -rotate-3" />
                       <div className="absolute inset-0 bg-[#0a0a0a] rounded-md border border-[#333] overflow-hidden rotate-3">
-                        <Image
-                          src="https://i.ibb.co/G3NvLPF/1253525.png"
-                          alt="Lorem ipsum"
-                          fill
-                          className="object-cover"
-                        />
+                        <Image src="https://i.ibb.co/G3NvLPF/1253525.png" alt="Lorem ipsum" fill className="object-cover" />
                       </div>
                     </motion.div>
                     <div>
@@ -701,7 +662,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {}
+      {/* Work */}
       <section id="work" ref={sectionRefs.work} className="py-24 bg-[#0a0a0a]">
         <div className="container mx-auto px-6">
           <SectionTitle>Project</SectionTitle>
@@ -727,50 +688,31 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {}
+      {/* Expertise */}
       <section id="expertise" ref={sectionRefs.expertise} className="py-24 bg-[#0f0f0f]">
         <div className="container mx-auto px-6">
           <SectionTitle>Expertise</SectionTitle>
 
           <Tabs defaultValue="design" className="mt-16">
             <TabsList className="grid grid-cols-3 max-w-md mx-auto bg-[#111] p-1 border border-[#222] rounded-lg">
-              <TabsTrigger
-                value="design"
-                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-teal-500 data-[state=active]:to-emerald-500 data-[state=active]:text-[#0a0a0a] rounded-md"
-              >
+              <TabsTrigger value="design" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-teal-500 data-[state=active]:to-emerald-500 data-[state=active]:text-[#0a0a0a] rounded-md">
                 Lorem
               </TabsTrigger>
-              <TabsTrigger
-                value="development"
-                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-teal-500 data-[state=active]:to-emerald-500 data-[state=active]:text-[#0a0a0a] rounded-md"
-              >
+              <TabsTrigger value="development" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-teal-500 data-[state=active]:to-emerald-500 data-[state=active]:text-[#0a0a0a] rounded-md">
                 Ipsum
+              </TabsTrigger>
+              <TabsTrigger value="other" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-teal-500 data-[state=active]:to-emerald-500 data-[state=active]:text-[#0a0a0a] rounded-md">
+                Other
               </TabsTrigger>
             </TabsList>
 
             <TabsContent value="design" className="mt-12">
               <div className="grid md:grid-cols-3 gap-8">
                 {[
-                  {
-                    title: "Digital poster",
-                    description:
-                      "I am able to create digital posters for products or restaurant menu banners.",
-                  },
-                  {
-                    title: "Vector ilustrator",
-                    description:
-                      "able to create illustrator drawings with vector style.",
-                  },
-                  {
-                    title: "Image editing",
-                    description:
-                      "I am able to use an image editor app for editing purposes and many things.",
-                  },
-                  {
-                    title: "Video editing",
-                    description:
-                      "I usually use a video editor application as a means of editing videos for YouTube content on my channel.",
-                  }
+                  { title: "Digital poster", description: "I am able to create digital posters for products or restaurant menu banners." },
+                  { title: "Vector ilustrator", description: "able to create illustrator drawings with vector style." },
+                  { title: "Image editing", description: "I am able to use an image editor app for editing purposes and many things." },
+                  { title: "Video editing", description: "I usually use a video editor application as a means of editing videos for YouTube content on my channel." },
                 ].map((skill, index) => (
                   <ExpertiseCard key={index} skill={skill} index={index} />
                 ))}
@@ -780,27 +722,27 @@ export default function Portfolio() {
             <TabsContent value="development" className="mt-12">
               <div className="grid md:grid-cols-3 gap-8">
                 {[
-                  {
-                    title: "Javascript",
-                    description: "quite skilled in using javascript language, such as website building, restful api, bot automation, backend, web scraping and more.",
-                  },
-                  {
-                    title: "Typescript",
-                    description:
-                      "same as javascript skills, but the coding is more typed safe.",
-                  },
-                  {
-                    title: "SQL Database",
-                    description:
-                      "able to use and operate SQL databases.",
-                  }
+                  { title: "Javascript", description: "quite skilled in using javascript language, such as website building, restful api, bot automation, backend, web scraping and more." },
+                  { title: "Typescript", description: "same as javascript skills, but the coding is more typed safe." },
+                  { title: "SQL Database", description: "able to use and operate SQL databases." },
                 ].map((skill, index) => (
                   <ExpertiseCard key={index} skill={skill} index={index} />
                 ))}
               </div>
             </TabsContent>
 
-      {}
+            <TabsContent value="other" className="mt-12">
+              <div className="grid md:grid-cols-3 gap-8">
+                {[{ title: "Misc", description: "Additional skills and interests." }].map((skill, index) => (
+                  <ExpertiseCard key={index} skill={skill} index={index} />
+                ))}
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </section>
+
+      {/* Testimonials */}
       <section className="py-16 md:py-24 bg-[#0a0a0a]">
         <div className="container mx-auto px-4 sm:px-6">
           <SectionTitle>What They Say</SectionTitle>
@@ -837,27 +779,13 @@ export default function Portfolio() {
                 viewport={{ once: true, margin: "-50px" }}
                 className={`flex ${testimonial.position === "right" ? "justify-end" : "justify-start"}`}
               >
-                <div
-                  className={`flex max-w-xs sm:max-w-sm md:max-w-md ${
-                    testimonial.position === "right" ? "flex-row-reverse" : "flex-row"
-                  }`}
-                >
+                <div className={`flex max-w-xs sm:max-w-sm md:max-w-md ${testimonial.position === "right" ? "flex-row-reverse" : "flex-row"}`}>
                   <div className="flex-shrink-0 self-end">
                     <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-teal-500/30">
-                      <Image
-                        src={testimonial.image || "/placeholder.svg"}
-                        alt={testimonial.name}
-                        fill
-                        sizes="48px"
-                        className="object-cover"
-                      />
+                      <Image src={testimonial.image || "/placeholder.svg"} alt={testimonial.name} fill sizes="48px" className="object-cover" />
                     </div>
                   </div>
-                  <div
-                    className={`${
-                      testimonial.position === "right" ? "mr-3 sm:mr-4" : "ml-3 sm:ml-4"
-                    } bg-[#111] border border-[#222] rounded-lg p-3 sm:p-4 hover:border-teal-500/30 transition-colors hover-card`}
-                  >
+                  <div className={`${testimonial.position === "right" ? "mr-3 sm:mr-4" : "ml-3 sm:ml-4"} bg-[#111] border border-[#222] rounded-lg p-3 sm:p-4 hover:border-teal-500/30 transition-colors hover-card`}>
                     <p className="text-[#aaa] text-sm sm:text-base mb-3">{testimonial.quote}</p>
                     <div className="flex flex-col">
                       <span className="text-[#f5f5f5] font-medium text-sm sm:text-base">{testimonial.name}</span>
@@ -871,28 +799,20 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {}
+      {/* Contact */}
       <section id="contact" ref={sectionRefs.contact} className="py-24 bg-[#0f0f0f]">
         <div className="container mx-auto px-6">
           <SectionTitle>Contact</SectionTitle>
 
           <div className="grid md:grid-cols-2 gap-16 mt-16">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}>
               <h3 className="text-2xl font-bold mb-6 text-[#f5f5f5]">Fatahillah Al Makarim</h3>
               <p className="text-[#aaa] mb-8 leading-relaxed">
                 Contact me if you have any questions about me or would like to establish a business relationship with me.
               </p>
 
               <div className="space-y-6 mb-8">
-                <motion.div
-                  whileHover={{ x: 5 }}
-                  className="flex items-start gap-4 p-3 rounded-lg hover:bg-[#111]/50 transition-colors"
-                >
+                <motion.div whileHover={{ x: 5 }} className="flex items-start gap-4 p-3 rounded-lg hover:bg-[#111]/50 transition-colors">
                   <div className="bg-teal-500/10 p-3 rounded-lg">
                     <Mail className="h-6 w-6 text-teal-500" />
                   </div>
@@ -903,34 +823,22 @@ export default function Portfolio() {
                     </a>
                   </div>
                 </motion.div>
-                <motion.div
-                  whileHover={{ x: 5 }}
-                  className="flex items-start gap-4 p-3 rounded-lg hover:bg-[#111]/50 transition-colors"
-                >
+
+                <motion.div whileHover={{ x: 5 }} className="flex items-start gap-4 p-3 rounded-lg hover:bg-[#111]/50 transition-colors">
                   <div className="bg-teal-500/10 p-3 rounded-lg">
                     <Github className="h-6 w-6 text-teal-500" />
                   </div>
                   <div>
                     <h4 className="font-medium text-[#f5f5f5]">Ipsum</h4>
-                    <a
-                      href="https://github.com/ztrdiamond"
-                      target="_blank"
-                      className="text-[#aaa] hover:text-teal-500 transition-colors"
-                      rel="noreferrer"
-                    >
+                    <a href="https://github.com/ztrdiamond" target="_blank" rel="noreferrer" className="text-[#aaa] hover:text-teal-500 transition-colors">
                       github.com/ztrdiamond
                     </a>
                   </div>
                 </motion.div>
-              </div>
+              </div>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} viewport={{ once: true }}>
               <form className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
@@ -974,7 +882,7 @@ export default function Portfolio() {
                     rows={5}
                     className="w-full px-4 py-3 bg-[#111] border border-[#222] rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-[#f5f5f5] resize-none transition-all"
                     placeholder="hi, my name is..."
-                  ></textarea>
+                  />
                 </div>
                 <Button className="w-full bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-[#0a0a0a] rounded-md group">
                   <Send className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-1" /> Submit
@@ -985,7 +893,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {}
+      {/* Footer */}
       <footer className="py-12 border-t border-[#222] bg-[#0a0a0a]">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
@@ -1017,109 +925,4 @@ export default function Portfolio() {
       </footer>
     </div>
   )
-})
-
-
-function getSectionIcon(section: string) {
-  switch (section) {
-    case "home":
-      return <User className="h-5 w-5 text-teal-500" />
-    case "about":
-      return <User className="h-5 w-5 text-teal-500" />
-    case "personal":
-      return <Heart className="h-5 w-5 text-teal-500" />
-    case "work":
-      return <Briefcase className="h-5 w-5 text-teal-500" />
-    case "expertise":
-      return <Code className="h-5 w-5 text-teal-500" />
-    case "contact":
-      return <Mail className="h-5 w-5 text-teal-500" />
-    default:
-      return null
-  }
 }
-
-
-function SectionTitle({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="text-center">
-      <h2 className="text-3xl md:text-4xl font-bold inline-block relative text-[#f5f5f5]">
-        {children}
-        <motion.span
-          className="absolute -bottom-3 left-1/2 -translate-x-1/2 h-1 bg-gradient-to-r from-teal-500 to-emerald-500 rounded-full"
-          initial={{ width: 0 }}
-          whileInView={{ width: "4rem" }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        ></motion.span>
-      </h2>
-    </div>
-  )
-}
-
-function ProjectCard({ project, index }: { project: any; index: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      viewport={{ once: true }}
-      className="group"
-    >
-      <div className="grid md:grid-cols-2 gap-8 items-center">
-        <div className={`order-2 ${index % 2 === 0 ? "md:order-2" : "md:order-1"}`}>
-          <h3 className="text-2xl font-bold mb-4 text-[#f5f5f5]">{project.title}</h3>
-          <p className="text-[#aaa] mb-6 leading-relaxed">{project.description}</p>
-          <div className="flex flex-wrap gap-2 mb-6">
-            {project.tags.map((tag: string) => (
-              <Badge
-                key={tag}
-                variant="outline"
-                className="px-3 py-1 bg-[#111] text-[#aaa] text-sm rounded-md border border-[#222]"
-              >
-                {tag}
-              </Badge>
-            ))}
-          </div>
-          <Button className="bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-[#0a0a0a] rounded-md group">
-            Lorem Ipsum <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Button>
-        </div>
-
-        <div className={`order-1 ${index % 2 === 0 ? "md:order-1" : "md:order-2"}`}>
-          <motion.div
-            className="relative overflow-hidden rounded-lg border border-[#222] aspect-[16/9] group-hover:border-teal-500/30 transition-colors"
-            whileHover={{ scale: 1.02 }}
-          >
-            <Image
-              src={project.image || "/placeholder.svg"}
-              alt={project.title}
-              fill
-              loading="lazy"
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent opacity-60"></div>
-          </motion.div>
-        </div>
-      </div>
-    </motion.div>
-  )
-}
-
-function ExpertiseCard({ skill, index }: { skill: any; index: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay: index * 0.05 }}
-      viewport={{ once: true, margin: "-50px" }}
-      className="bg-[#111] border border-[#222] rounded-lg p-4 sm:p-6 hover:border-teal-500/30 transition-colors hover-card"
-      whileHover={{ y: -3, transition: { duration: 0.2 } }}
-    >
-      <h3 className="text-xl font-medium text-[#f5f5f5] mb-3">{skill.title}</h3>
-      <p className="text-[#aaa] text-sm leading-relaxed">{skill.description}</p>
-    </motion.div>
-  )
-}
-
