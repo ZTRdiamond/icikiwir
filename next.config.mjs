@@ -1,21 +1,17 @@
-let userConfig = undefined
+// next.config.mjs
+let userConfig
 try {
-  userConfig = await import('./new-user-next.config')
+  userConfig = (await import('./new-user-next.config'))?.default
 } catch (e) {
-  // ignore error
+  // ignore
 }
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  images: {
-    unoptimized: true,
-  },
+  distDir: 'build',
+  eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: true },
+  images: { unoptimized: true },
   experimental: {
     webpackBuildWorker: true,
     parallelServerBuildTraces: true,
@@ -25,22 +21,13 @@ const nextConfig = {
 
 mergeConfig(nextConfig, userConfig)
 
-function mergeConfig(nextConfig, userConfig) {
-  if (!userConfig) {
-    return
-  }
-
-  for (const key in userConfig) {
-    if (
-      typeof nextConfig[key] === 'object' &&
-      !Array.isArray(nextConfig[key])
-    ) {
-      nextConfig[key] = {
-        ...nextConfig[key],
-        ...userConfig[key],
-      }
+function mergeConfig(base, extra) {
+  if (!extra) return
+  for (const key of Object.keys(extra)) {
+    if (typeof base[key] === 'object' && base[key] !== null && !Array.isArray(base[key])) {
+      base[key] = { ...base[key], ...extra[key] }
     } else {
-      nextConfig[key] = userConfig[key]
+      base[key] = extra[key]
     }
   }
 }
