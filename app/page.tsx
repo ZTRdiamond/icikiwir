@@ -49,53 +49,19 @@ export default function Portfolio() {
 
   
   const socialProfiles = [
-    { name: "GitHub", icon: <Github className="h-5 w-5" />, url: "https://github.com/username" },
-    { name: "LinkedIn", icon: <Linkedin className="h-5 w-5" />, url: "https://linkedin.com/in/username" },
-    { name: "Twitter", icon: <Twitter className="h-5 w-5" />, url: "https://twitter.com/username" },
-    { name: "Instagram", icon: <Instagram className="h-5 w-5" />, url: "https://instagram.com/username" },
+    { name: "GitHub", icon: <Github className="h-5 w-5" />, url: "https://github.com/ztrdiamond" },
+    { name: "Instagram", icon: <Instagram className="h-5 w-5" />, url: "https://instagram.com/fth.am_" },
   ]
 
   
   const projects = [
     {
-      title: "Lorem Ipsum Project",
+      title: "Amira Chatbot",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.",
-      image: "https://files.catbox.moe/w1868g.webp",
-      tags: ["Lorem", "Ipsum", "Dolor"],
-      link: "#",
-    },
-    {
-      title: "Dolor Sit Amet",
-      description:
-        "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
-      image: "https://files.catbox.moe/w1868g.webp",
-      tags: ["Consectetur", "Adipiscing", "Elit"],
-      link: "#",
-    },
-    {
-      title: "Consectetur Adipiscing",
-      description:
-        "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.",
-      image: "https://files.catbox.moe/w1868g.webp",
-      tags: ["Natus", "Error", "Voluptatem"],
-      link: "#",
-    },
-    {
-      title: "Sed Ut Perspiciatis",
-      description:
-        "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat.",
-      image: "https://files.catbox.moe/w1868g.webp",
-      tags: ["Quis", "Autem", "Reprehenderit"],
-      link: "#",
-    },
-    {
-      title: "Nemo Enim Ipsam",
-      description:
-        "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora.",
-      image: "https://files.catbox.moe/w1868g.webp",
-      tags: ["Neque", "Porro", "Quisquam"],
-      link: "#",
+        "A simple and multifunctional whatsapp bot for everyone.",
+      image: "https://files.catbox.moe/wlr9km.png",
+      tags: ["Bot", "Baileys"],
+      link: "https://amira.us.kg",
     },
   ]
 
@@ -301,22 +267,21 @@ export default function Portfolio() {
                   variant="outline"
                   className="text-sm font-medium text-teal-500 mb-4 tracking-wider px-4 py-1.5 border-teal-500/30"
                 >
-                  LOREM IPSUM
+                  Tech Enthusiast
                 </Badge>
               </motion.div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Lorem <span className="text-gradient">Ipsum</span> Dolor
+                Fatahillah <span className="text-gradient">Al</span> Makarim
               </h1>
               <p className="text-[#aaa] text-lg mb-8 leading-relaxed max-w-lg">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu
-                sed erat molestie vehicula.
+                A chill guy who likes technology and programming, also i love cats too :3
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button
                   className="bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-[#0a0a0a] rounded-md px-6 group"
                   onClick={() => scrollToSection("work")}
                 >
-                  Lorem Ipsum
+                  Projects
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
                 <Button
@@ -324,7 +289,7 @@ export default function Portfolio() {
                   className="border-[#333] text-[#f5f5f5] hover:bg-[#111] hover:border-[#444] rounded-md px-6"
                   onClick={() => scrollToSection("contact")}
                 >
-                  Dolor Sit
+                  Contact
                 </Button>
               </div>
 
@@ -394,7 +359,7 @@ export default function Portfolio() {
       {}
       <section id="about" ref={sectionRefs.about} className="py-24 bg-[#0f0f0f]">
         <div className="container mx-auto px-6">
-          <SectionTitle>Lorem Ipsum</SectionTitle>
+          <SectionTitle>About</SectionTitle>
 
           <div className="mt-16">
             {}
@@ -407,17 +372,15 @@ export default function Portfolio() {
             >
               <h3 className="text-2xl font-bold mb-6 text-[#f5f5f5]">Lorem Ipsum Dolor</h3>
               <p className="text-[#aaa] mb-6 leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu
-                sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
+                Yayaya
               </p>
               <p className="text-[#aaa] mb-8 leading-relaxed">
-                Ut non enim eleifend felis pretium feugiat. Vivamus quis mi. Phasellus a est. Phasellus magna. In hac
-                habitasse platea dictumst. Curabitur at lacus ac velit ornare lobortis.
+                Yeyeye
               </p>
 
               <div className="grid grid-cols-2 gap-8 mb-8">
                 <div>
-                  <h4 className="text-teal-500 font-medium mb-3">Lorem Ipsum</h4>
+                  <h4 className="text-teal-500 font-medium mb-3">Education</h4>
                   <div className="space-y-4">
                     <div className="hover-card p-3 rounded-lg bg-[#111]/50">
                       <div className="text-[#f5f5f5] font-medium">Dolor Sit Amet</div>
@@ -430,7 +393,7 @@ export default function Portfolio() {
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-teal-500 font-medium mb-3">Dolor Sit</h4>
+                  <h4 className="text-teal-500 font-medium mb-3">Skills & Knowledge</h4>
                   <div className="space-y-4">
                     <div className="hover-card p-3 rounded-lg bg-[#111]/50">
                       <div className="text-[#f5f5f5] font-medium">Consectetur Adipiscing</div>
@@ -448,7 +411,7 @@ export default function Portfolio() {
                 className="bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-[#0a0a0a] rounded-md px-6 group"
                 onClick={() => scrollToSection("contact")}
               >
-                <Mail className="mr-2 h-4 w-4" /> Lorem Ipsum
+                <Mail className="mr-2 h-4 w-4" /> Email
               </Button>
             </motion.div>
           </div>
@@ -458,7 +421,7 @@ export default function Portfolio() {
       {}
       <section id="personal" ref={sectionRefs.personal} className="py-24 bg-[#0a0a0a]">
         <div className="container mx-auto px-6">
-          <SectionTitle>Lorem Ipsum</SectionTitle>
+          <SectionTitle>Personal</SectionTitle>
 
           <div className="mt-16 grid lg:grid-cols-2 gap-12">
             <motion.div
@@ -644,14 +607,14 @@ export default function Portfolio() {
               className="space-y-10"
             >
               <div>
-                <h4 className="text-xl font-medium mb-6 text-[#f5f5f5]">Adipiscing Elit</h4>
+                <h4 className="text-xl font-medium mb-6 text-[#f5f5f5]">Activity</h4>
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   className="bg-[#111] border border-[#222] rounded-lg p-6 hover:border-teal-500/30 transition-colors hover-card"
                 >
                   <div className="rounded-lg overflow-hidden border border-[#222] shadow-md bg-[#111] p-[1px]">
                     <iframe
-                      src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M"
+                      src="https://github-readme-stats.vercel.app/api/wakatime?username=@ztrdiamond&card_width=300&bg_color=21232a&title_color=61dafb&text_color=ffffff&hide_border=true"
                       width="100%"
                       height="380"
                       frameBorder="0"
@@ -661,18 +624,18 @@ export default function Portfolio() {
                     ></iframe>
                   </div>
                 </motion.div>
-              </div>
+              </div>1
 
               <div>
-                <h4 className="text-xl font-medium mb-6 text-[#f5f5f5]">Nullam In Dui</h4>
+                <h4 className="text-xl font-medium mb-6 text-[#f5f5f5]">Current Job</h4>
                 <div className="space-y-4">
                   <motion.div
                     whileHover={{ scale: 1.02, x: 5 }}
                     className="bg-[#111] border border-[#222] rounded-lg p-5 hover:border-teal-500/30 transition-colors hover-card"
                   >
                     <div className="flex justify-between items-center">
-                      <span className="text-[#aaa]">Lorem</span>
-                      <span className="text-[#f5f5f5] font-medium">Ipsum</span>
+                      <span className="text-[#aaa]">Job field</span>
+                      <span className="text-[#f5f5f5] font-medium">Construction</span>
                     </div>
                   </motion.div>
                   <motion.div
@@ -680,8 +643,8 @@ export default function Portfolio() {
                     className="bg-[#111] border border-[#222] rounded-lg p-5 hover:border-teal-500/30 transition-colors hover-card"
                   >
                     <div className="flex justify-between items-center">
-                      <span className="text-[#aaa]">Dolor</span>
-                      <span className="text-[#f5f5f5] font-medium">Sit Amet</span>
+                      <span className="text-[#aaa]">Job title</span>
+                      <span className="text-[#f5f5f5] font-medium">Helper</span>
                     </div>
                   </motion.div>
                   <motion.div
@@ -689,24 +652,20 @@ export default function Portfolio() {
                     className="bg-[#111] border border-[#222] rounded-lg p-5 hover:border-teal-500/30 transition-colors hover-card"
                   >
                     <div className="flex justify-between items-center">
-                      <span className="text-[#aaa]">Consectetur</span>
-                      <span className="text-[#f5f5f5] font-medium">Adipiscing</span>
+                      <span className="text-[#aaa]">Job experience</span>
+                      <span className="text-[#f5f5f5] font-medium">10+ month</span>
                     </div>
                   </motion.div>
                   <motion.div
                     whileHover={{ scale: 1.02, x: 5 }}
                     className="bg-[#111] border border-[#222] rounded-lg p-5 hover:border-teal-500/30 transition-colors hover-card"
                   >
-                    <div className="flex justify-between items-center">
-                      <span className="text-[#aaa]">Elit</span>
-                      <span className="text-[#f5f5f5] font-medium">"Nullam in dui mauris"</span>
-                    </div>
                   </motion.div>
                 </div>
               </div>
 
               <div>
-                <h4 className="text-xl font-medium mb-6 text-[#f5f5f5]">Vivamus Hendrerit</h4>
+                <h4 className="text-xl font-medium mb-6 text-[#f5f5f5]">Employment History</h4>
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   className="bg-[#111] border border-[#222] rounded-lg p-6 hover:border-teal-500/30 transition-colors hover-card"
@@ -728,11 +687,10 @@ export default function Portfolio() {
                       </div>
                     </motion.div>
                     <div>
-                      <h5 className="text-[#f5f5f5] font-medium">Lorem Ipsum Dolor</h5>
-                      <p className="text-[#aaa] text-sm">Sit Amet 2023</p>
+                      <h5 className="text-[#f5f5f5] font-medium">Construction Worker</h5>
+                      <p className="text-[#aaa] text-sm">Joined at Oct 2024</p>
                       <p className="text-[#aaa] text-sm mt-2">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit
-                        arcu sed erat molestie vehicula.
+                        started work as a helper in the construction field, learning to understand construction work and taking carpentry seriously for life experience.
                       </p>
                     </div>
                   </div>
@@ -746,7 +704,7 @@ export default function Portfolio() {
       {}
       <section id="work" ref={sectionRefs.work} className="py-24 bg-[#0a0a0a]">
         <div className="container mx-auto px-6">
-          <SectionTitle>Lorem Ipsum</SectionTitle>
+          <SectionTitle>Project</SectionTitle>
 
           <div className="mt-16 space-y-24">
             {projects.slice(0, showAllProjects ? projects.length : 3).map((project, index) => (
@@ -772,7 +730,7 @@ export default function Portfolio() {
       {}
       <section id="expertise" ref={sectionRefs.expertise} className="py-24 bg-[#0f0f0f]">
         <div className="container mx-auto px-6">
-          <SectionTitle>Lorem Ipsum</SectionTitle>
+          <SectionTitle>Expertise</SectionTitle>
 
           <Tabs defaultValue="design" className="mt-16">
             <TabsList className="grid grid-cols-3 max-w-md mx-auto bg-[#111] p-1 border border-[#222] rounded-lg">
@@ -788,47 +746,31 @@ export default function Portfolio() {
               >
                 Ipsum
               </TabsTrigger>
-              <TabsTrigger
-                value="strategy"
-                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-teal-500 data-[state=active]:to-emerald-500 data-[state=active]:text-[#0a0a0a] rounded-md"
-              >
-                Dolor
-              </TabsTrigger>
             </TabsList>
 
             <TabsContent value="design" className="mt-12">
               <div className="grid md:grid-cols-3 gap-8">
                 {[
                   {
-                    title: "Lorem Ipsum",
+                    title: "Digital poster",
                     description:
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.",
+                      "I am able to create digital posters for products or restaurant menu banners.",
                   },
                   {
-                    title: "Dolor Sit Amet",
+                    title: "Vector ilustrator",
                     description:
-                      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
+                      "able to create illustrator drawings with vector style.",
                   },
                   {
-                    title: "Consectetur Adipiscing",
+                    title: "Image editing",
                     description:
-                      "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.",
+                      "I am able to use an image editor app for editing purposes and many things.",
                   },
                   {
-                    title: "Elit Nullam",
+                    title: "Video editing",
                     description:
-                      "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat.",
-                  },
-                  {
-                    title: "In Dui Mauris",
-                    description:
-                      "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.",
-                  },
-                  {
-                    title: "Vivamus Hendrerit",
-                    description:
-                      "Sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
-                  },
+                      "I usually use a video editor application as a means of editing videos for YouTube content on my channel.",
+                  }
                 ].map((skill, index) => (
                   <ExpertiseCard key={index} skill={skill} index={index} />
                 ))}
@@ -839,85 +781,29 @@ export default function Portfolio() {
               <div className="grid md:grid-cols-3 gap-8">
                 {[
                   {
-                    title: "Arcu Sed Erat",
-                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.",
+                    title: "Javascript",
+                    description: "quite skilled in using javascript language, such as website building, restful api, bot automation, backend, web scraping and more.",
                   },
                   {
-                    title: "Molestie Vehicula",
+                    title: "Typescript",
                     description:
-                      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
+                      "same as javascript skills, but the coding is more typed safe.",
                   },
                   {
-                    title: "Sed Auctor Neque",
+                    title: "SQL Database",
                     description:
-                      "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.",
-                  },
-                  {
-                    title: "Eu Tellus Rhoncus",
-                    description:
-                      "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
-                  },
-                  {
-                    title: "Ut Eleifend Nibh",
-                    description:
-                      "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.",
-                  },
-                  {
-                    title: "Porttitor Ut Non",
-                    description:
-                      "Sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
-                  },
+                      "able to use and operate SQL databases.",
+                  }
                 ].map((skill, index) => (
                   <ExpertiseCard key={index} skill={skill} index={index} />
                 ))}
               </div>
             </TabsContent>
-
-            <TabsContent value="strategy" className="mt-12">
-              <div className="grid md:grid-cols-3 gap-8">
-                {[
-                  {
-                    title: "Enim Eleifend",
-                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.",
-                  },
-                  {
-                    title: "Felis Pretium",
-                    description:
-                      "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
-                  },
-                  {
-                    title: "Feugiat Vivamus",
-                    description:
-                      "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.",
-                  },
-                  {
-                    title: "Quis Mi Phasellus",
-                    description:
-                      "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
-                  },
-                  {
-                    title: "A Est Phasellus",
-                    description:
-                      "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.",
-                  },
-                  {
-                    title: "Magna In Hac",
-                    description:
-                      "Sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
-                  },
-                ].map((skill, index) => (
-                  <ExpertiseCard key={index} skill={skill} index={index} />
-                ))}
-              </div>
-            </TabsContent>
-          </Tabs>
-        </div>
-      </section>
 
       {}
       <section className="py-16 md:py-24 bg-[#0a0a0a]">
         <div className="container mx-auto px-4 sm:px-6">
-          <SectionTitle>Lorem Ipsum</SectionTitle>
+          <SectionTitle>What They Say</SectionTitle>
 
           <div className="flex flex-col space-y-6 md:space-y-8 mt-12 md:mt-16 max-w-4xl mx-auto">
             {[
@@ -988,7 +874,7 @@ export default function Portfolio() {
       {}
       <section id="contact" ref={sectionRefs.contact} className="py-24 bg-[#0f0f0f]">
         <div className="container mx-auto px-6">
-          <SectionTitle>Lorem Ipsum</SectionTitle>
+          <SectionTitle>Contact</SectionTitle>
 
           <div className="grid md:grid-cols-2 gap-16 mt-16">
             <motion.div
@@ -997,10 +883,9 @@ export default function Portfolio() {
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-bold mb-6 text-[#f5f5f5]">Dolor Sit Amet</h3>
+              <h3 className="text-2xl font-bold mb-6 text-[#f5f5f5]">Fatahillah Al Makarim</h3>
               <p className="text-[#aaa] mb-8 leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu
-                sed erat molestie vehicula.
+                Contact me if you have any questions about me or would like to establish a business relationship with me.
               </p>
 
               <div className="space-y-6 mb-8">
@@ -1013,8 +898,8 @@ export default function Portfolio() {
                   </div>
                   <div>
                     <h4 className="font-medium text-[#f5f5f5]">Lorem</h4>
-                    <a href="mailto:lorem@ipsum.com" className="text-[#aaa] hover:text-teal-500 transition-colors">
-                      lorem@ipsum.com
+                    <a href="mailto:zanixon.group@gmail.com" className="text-[#aaa] hover:text-teal-500 transition-colors">
+                      zanixon.group@gmail.com
                     </a>
                   </div>
                 </motion.div>
@@ -1028,46 +913,16 @@ export default function Portfolio() {
                   <div>
                     <h4 className="font-medium text-[#f5f5f5]">Ipsum</h4>
                     <a
-                      href="https://github.com/username"
+                      href="https://github.com/ztrdiamond"
                       target="_blank"
                       className="text-[#aaa] hover:text-teal-500 transition-colors"
                       rel="noreferrer"
                     >
-                      github.com/lorem
+                      github.com/ztrdiamond
                     </a>
                   </div>
                 </motion.div>
-                <motion.div
-                  whileHover={{ x: 5 }}
-                  className="flex items-start gap-4 p-3 rounded-lg hover:bg-[#111]/50 transition-colors"
-                >
-                  <div className="bg-teal-500/10 p-3 rounded-lg">
-                    <Linkedin className="h-6 w-6 text-teal-500" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-[#f5f5f5]">Dolor</h4>
-                    <a
-                      href="https://linkedin.com/in/username"
-                      target="_blank"
-                      className="text-[#aaa] hover:text-teal-500 transition-colors"
-                      rel="noreferrer"
-                    >
-                      linkedin.com/in/ipsum
-                    </a>
-                  </div>
-                </motion.div>
-              </div>
-
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                className="bg-[#111] border border-[#222] rounded-lg p-6 hover:border-teal-500/30 transition-colors hover-card"
-              >
-                <h4 className="font-medium text-[#f5f5f5] mb-2">Sit Amet</h4>
-                <p className="text-[#aaa]">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu
-                  sed erat molestie vehicula.
-                </p>
-              </motion.div>
+              </div>
             </motion.div>
 
             <motion.div
@@ -1080,49 +935,49 @@ export default function Portfolio() {
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-medium text-[#aaa]">
-                      Lorem
+                      Your name
                     </label>
                     <input
                       id="name"
                       className="w-full px-4 py-3 bg-[#111] border border-[#222] rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-[#f5f5f5] transition-all"
-                      placeholder="Lorem ipsum"
+                      placeholder="fulan"
                     />
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="email" className="text-sm font-medium text-[#aaa]">
-                      Ipsum
+                      Your email
                     </label>
                     <input
                       id="email"
                       type="email"
                       className="w-full px-4 py-3 bg-[#111] border border-[#222] rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-[#f5f5f5] transition-all"
-                      placeholder="Dolor sit"
+                      placeholder="fulan@zanixon.com"
                     />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="subject" className="text-sm font-medium text-[#aaa]">
-                    Dolor
+                    Subject
                   </label>
                   <input
                     id="subject"
                     className="w-full px-4 py-3 bg-[#111] border border-[#222] rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-[#f5f5f5] transition-all"
-                    placeholder="Sit amet"
+                    placeholder="My subject"
                   />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="message" className="text-sm font-medium text-[#aaa]">
-                    Amet
+                    Message
                   </label>
                   <textarea
                     id="message"
                     rows={5}
                     className="w-full px-4 py-3 bg-[#111] border border-[#222] rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-[#f5f5f5] resize-none transition-all"
-                    placeholder="Consectetur adipiscing"
+                    placeholder="hi, my name is..."
                   ></textarea>
                 </div>
                 <Button className="w-full bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-[#0a0a0a] rounded-md group">
-                  <Send className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-1" /> Lorem Ipsum
+                  <Send className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-1" /> Submit
                 </Button>
               </form>
             </motion.div>
@@ -1136,7 +991,7 @@ export default function Portfolio() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
               <Link href="#home" className="text-xl font-medium tracking-tight font-poppins">
-                <span className="text-gradient">Lorem</span>
+                <span className="text-gradient">Social</span>
                 <span className="text-[#f5f5f5]">.</span>
               </Link>
             </div>
