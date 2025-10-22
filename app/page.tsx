@@ -721,7 +721,7 @@ export default function Portfolio() {
             <TabsContent value="other" className="mt-12">
               <div className="grid md:grid-cols-3 gap-8">
                 {[{ title: "Misc", description: "Additional skills and interests." }].map((skill, index) => (
-                  <ExpertiseCard key={index} skill={skill} index={index} />
+                  <ExperienceCard key={index} skill={skill} index={index} />
                 ))}
               </div>
             </TabsContent>
