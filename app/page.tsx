@@ -132,7 +132,7 @@ export default function Portfolio() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrollProgress, setScrollProgress] = useState(0)
   const [showAllProjects, setShowAllProjects] = useState(false)
-  const sections = ["home", "about", "personal", "work", "expertise", "contact"] as const
+  const sections = ["home", "about", "personal", "work", "experience", "contact"] as const
   const { scrollYProgress } = useScroll()
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
 
@@ -141,7 +141,7 @@ export default function Portfolio() {
     about: useRef<HTMLElement>(null),
     personal: useRef<HTMLElement>(null),
     work: useRef<HTMLElement>(null),
-    expertise: useRef<HTMLElement>(null),
+    experience: useRef<HTMLElement>(null),
     contact: useRef<HTMLElement>(null),
   }
 
@@ -313,7 +313,7 @@ export default function Portfolio() {
                   className="mt-2 bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-[#0a0a0a] rounded-md w-full"
                   onClick={() => scrollToSection("contact")}
                 >
-                  <Mail className="mr-2 h-4 w-4" /> Lorem Ipsum
+                  <Mail className="mr-2 h-4 w-4" /> Contact
                 </Button>
               </motion.div>
 
@@ -586,7 +586,7 @@ export default function Portfolio() {
                     <iframe
                       src="https://github-readme-stats.vercel.app/api/wakatime?username=@ztrdiamond&card_width=300&bg_color=21232a&title_color=61dafb&text_color=ffffff&hide_border=true"
                       width="100%"
-                      height="100%"
+                      height="auto"
                       frameBorder={0}
                       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                       className="bg-[#111] rounded-lg"
