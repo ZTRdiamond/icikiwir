@@ -729,65 +729,6 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <!--
-      <section className="py-16 md:py-24 bg-[#0a0a0a]">
-        <div className="container mx-auto px-4 sm:px-6">
-          <SectionTitle>What They Say</SectionTitle>
-
-          <div className="flex flex-col space-y-6 md:space-y-8 mt-12 md:mt-16 max-w-4xl mx-auto">
-            {[
-              {
-                quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.",
-                name: "Lorem Ipsum",
-                title: "Dolor, Sit Amet",
-                image: "https://files.catbox.moe/y4qgg2.webp",
-                position: "left",
-              },
-              {
-                quote: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.",
-                name: "Consectetur Adipiscing",
-                title: "Elit, Nullam In",
-                image: "https://files.catbox.moe/13ar89.webp",
-                position: "right",
-              },
-              {
-                quote: "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.",
-                name: "Dui Mauris",
-                title: "Vivamus, Hendrerit",
-                image: "https://files.catbox.moe/3gtqwc.webp",
-                position: "left",
-              },
-            ].map((testimonial, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                viewport={{ once: true, margin: "-50px" }}
-                className={`flex ${testimonial.position === "right" ? "justify-end" : "justify-start"}`}
-              >
-                <div className={`flex max-w-xs sm:max-w-sm md:max-w-md ${testimonial.position === "right" ? "flex-row-reverse" : "flex-row"}`}>
-                  <div className="flex-shrink-0 self-end">
-                    <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-teal-500/30">
-                      <Image src={testimonial.image || "/placeholder.svg"} alt={testimonial.name} fill sizes="48px" className="object-cover" />
-                    </div>
-                  </div>
-                  <div className={`${testimonial.position === "right" ? "mr-3 sm:mr-4" : "ml-3 sm:ml-4"} bg-[#111] border border-[#222] rounded-lg p-3 sm:p-4 hover:border-teal-500/30 transition-colors hover-card`}>
-                    <p className="text-[#aaa] text-sm sm:text-base mb-3">{testimonial.quote}</p>
-                    <div className="flex flex-col">
-                      <span className="text-[#f5f5f5] font-medium text-sm sm:text-base">{testimonial.name}</span>
-                      <span className="text-[#aaa] text-xs sm:text-sm">{testimonial.title}</span>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-      -->
-
       {/* Contact */}
       <section id="contact" ref={sectionRefs.contact} className="py-24 bg-[#0f0f0f]">
         <div className="container mx-auto px-6">
@@ -826,61 +767,6 @@ export default function Portfolio() {
                 </motion.div>
               </div>
             </motion.div>
-            
-            <!--
-            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} viewport={{ once: true }}>
-              <form className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium text-[#aaa]">
-                      Your name
-                    </label>
-                    <input
-                      id="name"
-                      className="w-full px-4 py-3 bg-[#111] border border-[#222] rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-[#f5f5f5] transition-all"
-                      placeholder="fulan"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium text-[#aaa]">
-                      Your email
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      className="w-full px-4 py-3 bg-[#111] border border-[#222] rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-[#f5f5f5] transition-all"
-                      placeholder="fulan@zanixon.com"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="subject" className="text-sm font-medium text-[#aaa]">
-                    Subject
-                  </label>
-                  <input
-                    id="subject"
-                    className="w-full px-4 py-3 bg-[#111] border border-[#222] rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-[#f5f5f5] transition-all"
-                    placeholder="My subject"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium text-[#aaa]">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={5}
-                    className="w-full px-4 py-3 bg-[#111] border border-[#222] rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-[#f5f5f5] resize-none transition-all"
-                    placeholder="hi, my name is..."
-                  />
-                </div>
-                <Button className="w-full bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-[#0a0a0a] rounded-md group">
-                  <Send className="mr-2 h-4 w-4 transition-transform group-hover:translate-x-1" /> Submit
-                </Button>
-              </form>
-            </motion.div>
-            -->
-
           </div>
         </div>
       </section>
