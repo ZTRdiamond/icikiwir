@@ -631,7 +631,7 @@ export default function Portfolio() {
                     >
                       <div className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-emerald-500/10 rounded-md -rotate-3" />
                       <div className="absolute inset-0 bg-[#0a0a0a] rounded-md border border-[#333] overflow-hidden rotate-3">
-                        <Image src="https://i.ibb.co/G3NvLPF/1253525.png" alt="Lorem ipsum" fill className="object-cover" />
+                        <Image src="https://pomf2.lain.la/f/omaezv0k.jpeg" alt="image.png" fill className="object-cover" />
                       </div>
                     </motion.div>
                     <div>
@@ -798,7 +798,7 @@ export default function Portfolio() {
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-[#222] text-center">
-            <p className="text-[#aaa] text-sm">© {new Date().getFullYear()} Lorem. All rights reserved.</p>
+            <p className="text-[#aaa] text-sm">© {new Date().getFullYear()} ZTRdiamond. All rights reserved.</p>
           </div>
         </div>
       </footer>
