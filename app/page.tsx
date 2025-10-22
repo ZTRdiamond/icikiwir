@@ -498,24 +498,27 @@ export default function Portfolio() {
 
           <div className="mt-16 grid lg:grid-cols-2 gap-12">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}>
-              <h3 className="text-2xl font-bold mb-6 text-[#f5f5f5]">Dolor Sit Amet</h3>
+              <h3 className="text-2xl font-bold mb-6 text-[#f5f5f5]">Fatahillah Al Makarim</h3>
               <div className="space-y-4 text-[#aaa] leading-relaxed">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu
-                  sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.
+                  Technology has always been something that sparks my curiosity. I’m deeply interested in how it keeps evolving, especially in areas like artificial intelligence and new programming languages that reshape the way we build things. Watching how fast the tech world moves gives me constant inspiration to keep learning.
                 </p>
                 <p>
-                  Ut non enim eleifend felis pretium feugiat. Vivamus quis mi. Phasellus a est. Phasellus magna. In hac
-                  habitasse platea dictumst. Curabitur at lacus ac velit ornare lobortis.
+                  In daily life, I actually work full-time in construction — a completely different world from programming. But when the day’s work is done, I switch gears into what I love most: writing code. Programming started as a hobby for me, something I do out of pure interest, and it quickly became a big part of my personal growth.
                 </p>
                 <p>
-                  Fusce fermentum. Nullam cursus lacinia erat. Praesent blandit laoreet nibh. Fusce convallis metus id
-                  felis luctus adipiscing. Pellentesque egestas, neque sit amet convallis pulvinar.
+                  I began my self-taught programming journey in 2022, focusing mainly on JavaScript. At first, everything felt confusing and complex, but through time and practice, I learned how to connect logic, design, and structure into something that actually works. Each project became a small milestone, proof that persistence pays off.
+                </p>
+                <p>
+                  As I built more projects, I noticed how my understanding grew — from being unsure of what I was doing to fully grasping how different systems work together. Every success, every bug fixed, and every late-night experiment taught me something valuable about both coding and discipline.
+                </p>
+                <p>
+                  Even so, I don’t see myself as an expert. There’s always someone better, and I’m completely fine with that. It reminds me that learning never really ends. I’m still exploring, still improving, and still driven by the same excitement that made me start in the first place.
                 </p>
               </div>
 
               <div className="mt-10">
-                <h4 className="text-xl font-medium mb-4 text-[#f5f5f5]">Consectetur Adipiscing</h4>
+                <h4 className="text-xl font-medium mb-4 text-[#f5f5f5]">Other Hobbies</h4>
                 <div className="grid grid-cols-1 xs:grid-cols-2 gap-4">
                   {[
                     { label: "Lorem", svg: <path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12"></path> },
@@ -528,7 +531,7 @@ export default function Portfolio() {
                         <circle cx="17" cy="7" r="5"></circle>
                       </svg>
                     </div>
-                    <span className="text-[#f5f5f5]">Lorem</span>
+                    <span className="text-[#f5f5f5]">Singing</span>
                   </motion.div>
 
                   <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-3 bg-[#111] border border-[#222] rounded-lg p-4 hover:border-teal-500/30 transition-colors hover-card">
@@ -539,7 +542,7 @@ export default function Portfolio() {
                         <path d="m7 21 5-5 5 5"></path>
                       </svg>
                     </div>
-                    <span className="text-[#f5f5f5]">Ipsum</span>
+                    <span className="text-[#f5f5f5]">Watching Anime</span>
                   </motion.div>
 
                   <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-3 bg-[#111] border border-[#222] rounded-lg p-4 hover:border-teal-500/30 transition-colors hover-card">
@@ -550,7 +553,7 @@ export default function Portfolio() {
                         <circle cx="18" cy="16" r="3"></circle>
                       </svg>
                     </div>
-                    <span className="text-[#f5f5f5]">Dolor</span>
+                    <span className="text-[#f5f5f5]">Listening music</span>
                   </motion.div>
 
                   <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-3 bg-[#111] border border-[#222] rounded-lg p-4 hover:border-teal-500/30 transition-colors hover-card">
@@ -563,30 +566,7 @@ export default function Portfolio() {
                         <line x1="14" y1="1" x2="14" y2="4"></line>
                       </svg>
                     </div>
-                    <span className="text-[#f5f5f5]">Sit</span>
-                  </motion.div>
-
-                  <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-3 bg-[#111] border border-[#222] rounded-lg p-4 hover:border-teal-500/30 transition-colors hover-card">
-                    <div className="bg-teal-500/10 p-2 rounded-md flex-shrink-0">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-teal-500">
-                        <path d="m21 10-5-5-2 2-9-9-4 4 9 9-2 2 5 5c1 1 2 1 3 0l5-5c1-1 1-2 0-3Z"></path>
-                        <path d="M7.5 12.5 11 16"></path>
-                        <path d="M11 7 9.5 5.5"></path>
-                        <path d="M14 10 12.5 8.5"></path>
-                      </svg>
-                    </div>
-                    <span className="text-[#f5f5f5]">Amet</span>
-                  </motion.div>
-
-                  <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-3 bg-[#111] border border-[#222] rounded-lg p-4 hover:border-teal-500/30 transition-colors hover-card">
-                    <div className="bg-teal-500/10 p-2 rounded-md flex-shrink-0">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-teal-500">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
-                        <path d="M2 12h20"></path>
-                      </svg>
-                    </div>
-                    <span className="text-[#f5f5f5]">Consectetur</span>
+                    <span className="text-[#f5f5f5]">Chilling</span>
                   </motion.div>
                 </div>
               </div>
