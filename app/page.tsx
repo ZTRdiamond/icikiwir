@@ -388,6 +388,33 @@ export default function Portfolio() {
               </motion.div>
             </motion.div>
             
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative aspect-square max-w-md mx-auto will-change-transform"
+            >
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-emerald-500/10 rounded-2xl -rotate-6"
+                animate={{ rotate: [-6, -4, -6] }}
+                transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+              />
+              <motion.div
+                className="absolute inset-0 bg-[#111] rounded-2xl border border-[#222] overflow-hidden rotate-3"
+                animate={{ rotate: [3, 5, 3] }}
+                transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 0.5 }}
+              >
+                <Image
+                  src="https://files.catbox.moe/w1868g.webp"
+                  alt="Lorem Ipsum"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover mix-blend-luminosity opacity-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent opacity-40" />
+              </motion.div>
+            </motion.div>
           </div>
 
           <motion.div
@@ -413,34 +440,42 @@ export default function Portfolio() {
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-bold mb-6 text-[#f5f5f5]">Lorem Ipsum Dolor</h3>
-              <p className="text-[#aaa] mb-6 leading-relaxed">Yayaya</p>
-              <p className="text-[#aaa] mb-8 leading-relaxed">Yeyeye</p>
+              <h3 className="text-2xl font-bold mb-6 text-[#f5f5f5]">Fatahillah Al Makarim</h3>
+              <p className="text-[#aaa] mb-6 leading-relaxed">I'm a passionate technology enthusiast with a strong focus on backend development, database management, and bot creation. Over the past year, I’ve worked on various programming projects involving REST APIs, data-driven applications, and automation systems. I’ve built and maintained bots using frameworks such as Baileys for WhatsApp, Grammy for Telegram, and Discord.js for Discord—focusing on creating reliable, efficient, and scalable solutions that enhance communication and automation. My experience also includes designing backend architectures, optimizing data flow, and ensuring system stability through clean and maintainable code.</p>
+              <p className="text-[#aaa] mb-8 leading-relaxed">In addition to backend and bot development, I have hands-on experience in web scraping, both through manual approaches and tools like Cheerio. I enjoy exploring how data moves through the web and finding innovative ways to extract and utilize it effectively. I see programming as both a craft and a creative process—a way to transform logic and curiosity into functional solutions that solve real-world problems and push technology forward.</p>
 
               <div className="grid grid-cols-2 gap-8 mb-8">
                 <div>
-                  <h4 className="text-teal-500 font-medium mb-3">Education</h4>
+                  <h4 className="text-teal-500 font-medium mb-3">Career</h4>
                   <div className="space-y-4">
                     <div className="hover-card p-3 rounded-lg bg-[#111]/50">
-                      <div className="text-[#f5f5f5] font-medium">Dolor Sit Amet</div>
-                      <div className="text-[#aaa] text-sm">Consectetur adipiscing elit</div>
+                      <div className="text-[#f5f5f5] font-medium">Freelance</div>
+                      <div className="text-[#aaa] text-sm">I'm a freelance programmer specializing in backend systems, databases, and bot development.</div>
                     </div>
                     <div className="hover-card p-3 rounded-lg bg-[#111]/50">
-                      <div className="text-[#f5f5f5] font-medium">Nullam In Dui</div>
-                      <div className="text-[#aaa] text-sm">Mauris vivamus hendrerit</div>
+                      <div className="text-[#f5f5f5] font-medium">Lead of Zanixon Group 2023</div>
+                      <div className="text-[#aaa] text-sm">I founded Zanixon Group, a collaborative tech team where we grow together, share knowledge, and develop innovative projects as partners in learning and creation.</div>
                     </div>
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-teal-500 font-medium mb-3">Skills &amp; Knowledge</h4>
+                  <h4 className="text-teal-500 font-medium mb-3">Skills</h4>
                   <div className="space-y-4">
                     <div className="hover-card p-3 rounded-lg bg-[#111]/50">
-                      <div className="text-[#f5f5f5] font-medium">Consectetur Adipiscing</div>
-                      <div className="text-[#aaa] text-sm">Elit nullam in dui mauris</div>
+                      <div className="text-[#f5f5f5] font-medium">Backend</div>
+                      <div className="text-[#aaa] text-sm">Medium</div>
                     </div>
                     <div className="hover-card p-3 rounded-lg bg-[#111]/50">
-                      <div className="text-[#f5f5f5] font-medium">Vivamus Hendrerit</div>
-                      <div className="text-[#aaa] text-sm">Arcu sed erat molestie</div>
+                      <div className="text-[#f5f5f5] font-medium">Bot Development</div>
+                      <div className="text-[#aaa] text-sm">Intermediate</div>
+                    </div>
+                    <div className="hover-card p-3 rounded-lg bg-[#111]/50">
+                      <div className="text-[#f5f5f5] font-medium">Web Scraping</div>
+                      <div className="text-[#aaa] text-sm">Medium</div>
+                    </div>
+                    <div className="hover-card p-3 rounded-lg bg-[#111]/50">
+                      <div className="text-[#f5f5f5] font-medium">Database Management</div>
+                      <div className="text-[#aaa] text-sm">Medium</div>
                     </div>
                   </div>
                 </div>
@@ -450,7 +485,7 @@ export default function Portfolio() {
                 className="bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-[#0a0a0a] rounded-md px-6 group"
                 onClick={() => scrollToSection("contact")}
               >
-                <Mail className="mr-2 h-4 w-4" /> Email
+                <Mail className="mr-2 h-4 w-4" /> Contact
               </Button>
             </motion.div>
           </div>
