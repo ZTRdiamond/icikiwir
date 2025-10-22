@@ -553,7 +553,7 @@ export default function Portfolio() {
                         <circle cx="18" cy="16" r="3"></circle>
                       </svg>
                     </div>
-                    <span className="text-[#f5f5f5]">Listening music</span>
+                    <span className="text-[#f5f5f5]">Listening Music</span>
                   </motion.div>
 
                   <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-3 bg-[#111] border border-[#222] rounded-lg p-4 hover:border-teal-500/30 transition-colors hover-card">
@@ -586,7 +586,7 @@ export default function Portfolio() {
                     <iframe
                       src="https://github-readme-stats.vercel.app/api/wakatime?username=@ztrdiamond&card_width=300&bg_color=21232a&title_color=61dafb&text_color=ffffff&hide_border=true"
                       width="100%"
-                      height="380"
+                      height="100%"
                       frameBorder={0}
                       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                       className="bg-[#111] rounded-lg"
