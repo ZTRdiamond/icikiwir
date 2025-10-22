@@ -35,7 +35,7 @@ function getSectionIcon(section: string) {
       return <Heart className="h-5 w-5 text-teal-500" />
     case "work":
       return <Briefcase className="h-5 w-5 text-teal-500" />
-    case "expertise":
+    case "experience":
       return <Code className="h-5 w-5 text-teal-500" />
     case "contact":
       return <Mail className="h-5 w-5 text-teal-500" />
@@ -111,7 +111,7 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
   )
 }
 
-function ExpertiseCard({ skill, index }: { skill: any; index: number }) {
+function ExperienceCard({ skill, index }: { skill: any; index: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 15 }}
@@ -675,18 +675,18 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* Expertise */}
-      <section id="expertise" ref={sectionRefs.expertise} className="py-24 bg-[#0f0f0f]">
+      {/* Experience */}
+      <section id="experience" ref={sectionRefs.experience} className="py-24 bg-[#0f0f0f]">
         <div className="container mx-auto px-6">
-          <SectionTitle>Expertise</SectionTitle>
+          <SectionTitle>Experience</SectionTitle>
 
           <Tabs defaultValue="design" className="mt-16">
             <TabsList className="grid grid-cols-3 max-w-md mx-auto bg-[#111] p-1 border border-[#222] rounded-lg">
               <TabsTrigger value="design" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-teal-500 data-[state=active]:to-emerald-500 data-[state=active]:text-[#0a0a0a] rounded-md">
-                Lorem
+                Design
               </TabsTrigger>
               <TabsTrigger value="development" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-teal-500 data-[state=active]:to-emerald-500 data-[state=active]:text-[#0a0a0a] rounded-md">
-                Ipsum
+                Programming
               </TabsTrigger>
               <TabsTrigger value="other" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-teal-500 data-[state=active]:to-emerald-500 data-[state=active]:text-[#0a0a0a] rounded-md">
                 Other
@@ -701,7 +701,7 @@ export default function Portfolio() {
                   { title: "Image editing", description: "I am able to use an image editor app for editing purposes and many things." },
                   { title: "Video editing", description: "I usually use a video editor application as a means of editing videos for YouTube content on my channel." },
                 ].map((skill, index) => (
-                  <ExpertiseCard key={index} skill={skill} index={index} />
+                  <ExperienceCard key={index} skill={skill} index={index} />
                 ))}
               </div>
             </TabsContent>
@@ -713,7 +713,7 @@ export default function Portfolio() {
                   { title: "Typescript", description: "same as javascript skills, but the coding is more typed safe." },
                   { title: "SQL Database", description: "able to use and operate SQL databases." },
                 ].map((skill, index) => (
-                  <ExpertiseCard key={index} skill={skill} index={index} />
+                  <ExperienceCard key={index} skill={skill} index={index} />
                 ))}
               </div>
             </TabsContent>
