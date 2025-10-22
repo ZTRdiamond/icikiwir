@@ -227,7 +227,7 @@ export default function Portfolio() {
       <header className="fixed top-0 left-0 right-0 z-[100] bg-[#0a0a0a]/90 backdrop-blur-md border-b border-[#222] transition-all duration-300">
         <div className="container mx-auto px-6 py-5 flex justify-between items-center">
           <Link href="#home" className="text-xl font-medium tracking-tight font-poppins">
-            <span className="text-gradient">Lorem</span>
+            <span className="text-gradient">Fatahillah</span>
             <span className="text-[#f5f5f5]">.</span>
           </Link>
           <nav className="hidden md:flex items-center gap-8">
@@ -349,7 +349,7 @@ export default function Portfolio() {
                 </Badge>
               </motion.div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Fatahillah <span className="text-gradient">Al</span> Makarim
+                <span className="text-gradient">Fatahillah</span> Al Makarim
               </h1>
               <p className="text-[#aaa] text-lg mb-8 leading-relaxed max-w-lg">
                 A chill guy who likes technology and programming, also i love cats too :3
@@ -387,34 +387,7 @@ export default function Portfolio() {
                 ))}
               </motion.div>
             </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative aspect-square max-w-md mx-auto will-change-transform"
-            >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-teal-500/20 to-emerald-500/10 rounded-2xl -rotate-6"
-                animate={{ rotate: [-6, -4, -6] }}
-                transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-              />
-              <motion.div
-                className="absolute inset-0 bg-[#111] rounded-2xl border border-[#222] overflow-hidden rotate-3"
-                animate={{ rotate: [3, 5, 3] }}
-                transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 0.5 }}
-              >
-                <Image
-                  src="https://files.catbox.moe/w1868g.webp"
-                  alt="Lorem Ipsum"
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover mix-blend-luminosity opacity-90"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent opacity-40" />
-              </motion.div>
-            </motion.div>
+            
           </div>
 
           <motion.div
