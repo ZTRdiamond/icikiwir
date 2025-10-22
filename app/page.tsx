@@ -730,6 +730,7 @@ export default function Portfolio() {
       </section>
 
       {/* Testimonials */}
+      <!--
       <section className="py-16 md:py-24 bg-[#0a0a0a]">
         <div className="container mx-auto px-4 sm:px-6">
           <SectionTitle>What They Say</SectionTitle>
@@ -785,6 +786,7 @@ export default function Portfolio() {
           </div>
         </div>
       </section>
+      -->
 
       {/* Contact */}
       <section id="contact" ref={sectionRefs.contact} className="py-24 bg-[#0f0f0f]">
@@ -804,7 +806,7 @@ export default function Portfolio() {
                     <Mail className="h-6 w-6 text-teal-500" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-[#f5f5f5]">Lorem</h4>
+                    <h4 className="font-medium text-[#f5f5f5]">Email</h4>
                     <a href="mailto:zanixon.group@gmail.com" className="text-[#aaa] hover:text-teal-500 transition-colors">
                       zanixon.group@gmail.com
                     </a>
@@ -816,7 +818,7 @@ export default function Portfolio() {
                     <Github className="h-6 w-6 text-teal-500" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-[#f5f5f5]">Ipsum</h4>
+                    <h4 className="font-medium text-[#f5f5f5]">Github</h4>
                     <a href="https://github.com/ztrdiamond" target="_blank" rel="noreferrer" className="text-[#aaa] hover:text-teal-500 transition-colors">
                       github.com/ztrdiamond
                     </a>
@@ -824,7 +826,8 @@ export default function Portfolio() {
                 </motion.div>
               </div>
             </motion.div>
-
+            
+            <!--
             <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} viewport={{ once: true }}>
               <form className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-6">
@@ -876,9 +879,12 @@ export default function Portfolio() {
                 </Button>
               </form>
             </motion.div>
+            -->
+
           </div>
         </div>
       </section>
+      
 
       {/* Footer */}
       <footer className="py-12 border-t border-[#222] bg-[#0a0a0a]">
